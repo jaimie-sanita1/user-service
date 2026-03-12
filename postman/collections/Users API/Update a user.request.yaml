@@ -1,19 +1,11 @@
 $kind: http-request
+url: "{{baseUrl}}:/users/:id"
 method: PUT
-url: '{{baseUrl}}/users/:id'
-order: 4000
 headers:
-  - key: Content-Type
-    value: application/json
+  Content-Type: application/json
 pathVariables:
-  - key: id
-    value: ''
+  id: ""
 body:
   type: json
-  content: |-
-    {
-      "name": "string",
-      "email": "user@example.com",
-      "role": "admin",
-      "status": "active"
-    }
+  content: ""
+order: 4000

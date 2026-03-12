@@ -1,0 +1,6 @@
+name: Staging
+values:
+  - key: baseUrl
+    value: 'https://api-staging.example.com'
+    enabled: true
+color: 300

@@ -1,0 +1,6 @@
+name: QA
+values:
+  - key: baseUrl
+    value: 'https://api-qa.example.com'
+    enabled: true
+color: 120
