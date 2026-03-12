@@ -1,0 +1,13 @@
+{
+  "id": "3ac5544b-4136-462d-833b-986b248618c4",
+  "version": 1,
+  "name": "Users API Mock",
+  "protocol": "http",
+  "port": 4500,
+  "mockSrc": "./mock.js",
+  "autoRestartOnChange": true,
+  "logging": {
+    "level": "verbose",
+    "showBody": true
+  }
+}
