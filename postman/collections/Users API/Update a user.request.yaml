@@ -1,12 +1,10 @@
 $kind: http-request
-url: '{{baseUrl}}:/users/:id'
+url: "{{baseUrl}}:/users/:id"
 method: PUT
 headers:
-  - key: Content-Type
-    value: application/json
+  Content-Type: application/json
 pathVariables:
-  - key: id
-    value: '1'
+  id: "1"
 body:
   type: json
   content: |-
@@ -16,27 +14,30 @@ body:
       "role": "admin",
       "status": "active"
     }
-order: 4000
 scripts:
   - type: afterResponse
-    code: |-
+    code: >-
       pm.test("Status code is 200", function () {
           pm.response.to.have.status(200);
       });
+
 
       pm.test("Response time is under 500ms", function () {
           pm.expect(pm.response.responseTime).to.be.below(500);
       });
 
+
       pm.test("Content-Type is application/json", function () {
           pm.response.to.have.header("Content-Type", "application/json");
       });
+
 
       pm.test("Response is an object", function () {
           const jsonData = pm.response.json();
           pm.expect(jsonData).to.be.an("object");
           pm.expect(jsonData).to.not.be.an("array");
       });
+
 
       pm.test("Response has all required fields", function () {
           const jsonData = pm.response.json();
@@ -48,6 +49,7 @@ scripts:
           pm.expect(jsonData).to.have.property("createdAt");
       });
 
+
       pm.test("Response has correct field types", function () {
           const jsonData = pm.response.json();
           pm.expect(jsonData.id).to.be.a("string");
@@ -58,11 +60,13 @@ scripts:
           pm.expect(jsonData.createdAt).to.be.a("string");
       });
 
+
       pm.test("Updated name matches request body", function () {
           const jsonData = pm.response.json();
           const requestBody = JSON.parse(pm.request.body.raw);
           pm.expect(jsonData.name).to.equal(requestBody.name);
       });
+
 
       pm.test("Updated email matches request body", function () {
           const jsonData = pm.response.json();
@@ -70,31 +74,37 @@ scripts:
           pm.expect(jsonData.email).to.equal(requestBody.email);
       });
 
+
       pm.test("Updated role matches request body", function () {
           const jsonData = pm.response.json();
           const requestBody = JSON.parse(pm.request.body.raw);
           pm.expect(jsonData.role).to.equal(requestBody.role);
       });
 
+
       pm.test("Email has valid format", function () {
           const jsonData = pm.response.json();
           pm.expect(jsonData.email).to.include("@");
       });
+
 
       pm.test("Role is a valid enum value", function () {
           const jsonData = pm.response.json();
           pm.expect(jsonData.role).to.be.oneOf(["admin", "member"]);
       });
 
+
       pm.test("Status is a valid enum value", function () {
           const jsonData = pm.response.json();
           pm.expect(jsonData.status).to.be.oneOf(["active", "inactive", "suspended"]);
       });
 
+
       pm.test("createdAt is valid ISO 8601", function () {
           const jsonData = pm.response.json();
           pm.expect(new Date(jsonData.createdAt).toISOString()).to.equal(jsonData.createdAt);
       });
+
 
       pm.test("Returned id matches requested id", function () {
           const jsonData = pm.response.json();
@@ -102,3 +112,4 @@ scripts:
           pm.expect(jsonData.id).to.equal(requestedId);
       });
     language: text/javascript
+order: 4000

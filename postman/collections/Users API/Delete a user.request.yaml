@@ -1,10 +1,8 @@
 $kind: http-request
-url: '{{baseUrl}}:/users/:id'
+url: "{{baseUrl}}:/users/:id"
 method: DELETE
 pathVariables:
-  - key: id
-    value: '3'
-order: 5000
+  id: "3"
 scripts:
   - type: afterResponse
     code: |-
@@ -20,3 +18,4 @@ scripts:
           pm.expect(pm.response.text()).to.be.empty;
       });
     language: text/javascript
+order: 5000

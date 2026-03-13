@@ -1,5 +1,4 @@
 $kind: collection
-name: Users API
 description: API for managing users - supports CRUD operations on user resources.
 variables:
   baseUrl: https://api.example.com
