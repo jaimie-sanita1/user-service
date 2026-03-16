@@ -1,0 +1,41 @@
+$kind: http-example
+name: 200 OK
+request:
+  url: '{{baseUrl}}/users'
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "id": "usr_001",
+          "name": "Alice Johnson",
+          "email": "alice.johnson@example.com",
+          "role": "admin",
+          "status": "active",
+          "createdAt": "2024-01-15T10:30:00.000Z"
+        },
+        {
+          "id": "usr_002",
+          "name": "Bob Smith",
+          "email": "bob.smith@example.com",
+          "role": "member",
+          "status": "active",
+          "createdAt": "2024-02-20T14:45:00.000Z"
+        },
+        {
+          "id": "usr_003",
+          "name": "Carol Williams",
+          "email": "carol.williams@example.com",
+          "role": "member",
+          "status": "inactive",
+          "createdAt": "2024-03-10T09:15:00.000Z"
+        }
+      ]
+order: 1000

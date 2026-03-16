@@ -3,6 +3,7 @@ url: "{{baseUrl}}/users"
 method: POST
 headers:
   Content-Type: application/json
+examples: './.resources/Create a user.resources/examples/'
 body:
   type: json
   content: |-

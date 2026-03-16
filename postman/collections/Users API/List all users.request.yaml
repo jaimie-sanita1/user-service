@@ -1,6 +1,7 @@
 $kind: http-request
 url: "{{baseUrl}}/users"
 method: GET
+examples: './.resources/List all users.resources/examples/'
 scripts:
   - type: afterResponse
     code: >-

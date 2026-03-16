@@ -1,0 +1,12 @@
+$kind: http-example
+name: 204 No Content
+request:
+  url: '{{baseUrl}}/users/3'
+  method: DELETE
+response:
+  statusCode: 204
+  statusText: No Content
+  headers: []
+  body:
+    type: none
+order: 1000

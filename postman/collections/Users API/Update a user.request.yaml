@@ -5,6 +5,7 @@ headers:
   Content-Type: application/json
 pathVariables:
   id: "1"
+examples: './.resources/Update a user.resources/examples/'
 body:
   type: json
   content: |-

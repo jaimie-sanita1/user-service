@@ -3,6 +3,7 @@ url: "{{baseUrl}}:/users/:id"
 method: GET
 pathVariables:
   id: "1"
+examples: './.resources/Get a user by ID.resources/examples/'
 scripts:
   - type: afterResponse
     code: >-
