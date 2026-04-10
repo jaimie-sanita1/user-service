@@ -1,0 +1,19 @@
+$kind: http-request
+url: "{{baseUrl}}/users/:id"
+method: PUT
+headers:
+  Content-Type: application/json
+  Accept: application/json
+pathVariables:
+  id: string
+body:
+  type: json
+  content: |-
+    {
+      "name": "string",
+      "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+      "role": "member",
+      "status": "active"
+    }
+examples: ./.resources/Update a user.resources/examples
+order: 2000

@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/users/:id"
+  method: PUT
+  headers:
+    Content-Type: application/json
+  pathVariables:
+    id: string
+  body:
+    type: json
+    content: |-
+      {
+        "name": "string",
+        "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+        "role": "member",
+        "status": "active"
+      }
+response:
+  statusCode: 404
+  statusText: Not Found
+  body:
+    type: text
+    content: ""
+order: 2000

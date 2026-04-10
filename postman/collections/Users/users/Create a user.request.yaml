@@ -1,0 +1,17 @@
+$kind: http-request
+url: "{{baseUrl}}/users"
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "string",
+      "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+      "role": "member",
+      "status": "active"
+    }
+examples: ./.resources/Create a user.resources/examples
+order: 2000

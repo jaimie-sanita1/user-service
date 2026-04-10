@@ -1,0 +1,33 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/users"
+  method: POST
+  headers:
+    Content-Type: application/json
+    Accept: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "name": "string",
+        "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+        "role": "member",
+        "status": "active"
+      }
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: text
+    content: |-
+      {
+        "id": "string",
+        "name": "string",
+        "email": "jURUlYkO2U@DVgHcqXiggqeDjDblvi.qtvu",
+        "role": "member",
+        "status": "suspended",
+        "createdAt": "2010-03-11T06:12:56.098Z"
+      }
+order: 1000
