@@ -1,0 +1,24 @@
+$kind: http-example
+request:
+  url: "{{baseUrl}}/users/1"
+  method: PUT
+  body:
+    type: text
+    content: ""
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: text
+    content: |-
+      {
+        "id": "usr_001",
+        "name": "Alice Updated",
+        "email": "alice.updated@example.com",
+        "role": "admin",
+        "status": "active",
+        "createdAt": "2024-01-15T10:30:00.000Z"
+      }
+order: 1000

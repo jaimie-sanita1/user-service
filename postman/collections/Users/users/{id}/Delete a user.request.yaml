@@ -1,0 +1,27 @@
+$kind: http-request
+url: '{{baseUrl}}/users/:id'
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  id: '3'
+body:
+  type: text
+  content: ""
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 204", function () {
+          pm.response.to.have.status(204);
+      });
+
+      pm.test("Response time is under 500ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(500);
+      });
+
+      pm.test("Response body is empty", function () {
+          pm.expect(pm.response.text()).to.be.empty;
+      });
+    language: text/javascript
+examples: './.resources/Delete a user.resources/examples'
+order: 3000

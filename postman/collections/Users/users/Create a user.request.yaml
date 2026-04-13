@@ -1,0 +1,105 @@
+$kind: http-request
+url: '{{baseUrl}}/users'
+method: POST
+headers:
+  Content-Type: application/json
+  Accept: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "string",
+      "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+      "role": "member",
+      "status": "active"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 201", function () {
+          pm.response.to.have.status(201);
+      });
+
+      pm.test("Response time is under 500ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(500);
+      });
+
+      pm.test("Content-Type is application/json", function () {
+          pm.response.to.have.header("Content-Type", "application/json");
+      });
+
+      pm.test("Response is an object", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.be.an("object");
+      });
+
+      pm.test("Response has all required fields", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.have.property("id");
+          pm.expect(jsonData).to.have.property("name");
+          pm.expect(jsonData).to.have.property("email");
+          pm.expect(jsonData).to.have.property("role");
+          pm.expect(jsonData).to.have.property("status");
+          pm.expect(jsonData).to.have.property("createdAt");
+      });
+
+      pm.test("Response has correct field types", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.id).to.be.a("string");
+          pm.expect(jsonData.name).to.be.a("string");
+          pm.expect(jsonData.email).to.be.a("string");
+          pm.expect(jsonData.role).to.be.a("string");
+          pm.expect(jsonData.status).to.be.a("string");
+          pm.expect(jsonData.createdAt).to.be.a("string");
+      });
+
+      pm.test("Returned name matches request body", function () {
+          const jsonData = pm.response.json();
+          const requestBody = JSON.parse(pm.request.body.raw);
+          pm.expect(jsonData.name).to.equal(requestBody.name);
+      });
+
+      pm.test("Returned email matches request body", function () {
+          const jsonData = pm.response.json();
+          const requestBody = JSON.parse(pm.request.body.raw);
+          pm.expect(jsonData.email).to.equal(requestBody.email);
+      });
+
+      pm.test("Returned role matches request body", function () {
+          const jsonData = pm.response.json();
+          const requestBody = JSON.parse(pm.request.body.raw);
+          pm.expect(jsonData.role).to.equal(requestBody.role);
+      });
+
+      pm.test("Status defaults to active when not provided", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.status).to.equal("active");
+      });
+
+      pm.test("Role is a valid enum value", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.role).to.be.oneOf(["admin", "member"]);
+      });
+
+      pm.test("Status is a valid enum value", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.status).to.be.oneOf(["active", "inactive", "suspended"]);
+      });
+
+      pm.test("Email has valid format", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.email).to.include("@");
+      });
+
+      pm.test("createdAt is valid ISO 8601", function () {
+          const jsonData = pm.response.json();
+          pm.expect(new Date(jsonData.createdAt).toISOString()).to.equal(jsonData.createdAt);
+      });
+
+      pm.test("id is a non-empty string", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData.id).to.be.a("string").and.not.empty;
+      });
+    language: text/javascript
+examples: './.resources/Create a user.resources/examples'
+order: 2000
