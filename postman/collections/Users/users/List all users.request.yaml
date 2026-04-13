@@ -1,10 +1,82 @@
 $kind: http-request
-url: "{{baseUrl}}/users"
+url: '{{baseUrl}}/users'
 method: GET
 headers:
   Accept: application/json
 body:
   type: text
   content: ""
-examples: ./.resources/List all users.resources/examples
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status code is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response time is under 500ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(500);
+      });
+
+      pm.test("Content-Type is application/json", function () {
+          pm.response.to.have.header("Content-Type", "application/json");
+      });
+
+      pm.test("Response is an array", function () {
+          const jsonData = pm.response.json();
+          pm.expect(jsonData).to.be.an("array");
+      });
+
+      pm.test("Each user has all required fields", function () {
+          const jsonData = pm.response.json();
+          jsonData.forEach(function (user) {
+              pm.expect(user).to.have.property("id");
+              pm.expect(user).to.have.property("name");
+              pm.expect(user).to.have.property("email");
+              pm.expect(user).to.have.property("role");
+              pm.expect(user).to.have.property("status");
+              pm.expect(user).to.have.property("createdAt");
+          });
+      });
+
+      pm.test("Each user has correct field types", function () {
+          const jsonData = pm.response.json();
+          jsonData.forEach(function (user) {
+              pm.expect(user.id).to.be.a("string");
+              pm.expect(user.name).to.be.a("string");
+              pm.expect(user.email).to.be.a("string");
+              pm.expect(user.role).to.be.a("string");
+              pm.expect(user.status).to.be.a("string");
+              pm.expect(user.createdAt).to.be.a("string");
+          });
+      });
+
+      pm.test("Each user has valid email format", function () {
+          const jsonData = pm.response.json();
+          jsonData.forEach(function (user) {
+              pm.expect(user.email).to.include("@");
+          });
+      });
+
+      pm.test("Each user has valid role value", function () {
+          const jsonData = pm.response.json();
+          jsonData.forEach(function (user) {
+              pm.expect(user.role).to.be.oneOf(["admin", "member"]);
+          });
+      });
+
+      pm.test("Each user has valid status value", function () {
+          const jsonData = pm.response.json();
+          jsonData.forEach(function (user) {
+              pm.expect(user.status).to.be.oneOf(["active", "inactive", "suspended"]);
+          });
+      });
+
+      pm.test("Each user has valid ISO 8601 createdAt", function () {
+          const jsonData = pm.response.json();
+          jsonData.forEach(function (user) {
+              pm.expect(new Date(user.createdAt).toISOString()).to.equal(user.createdAt);
+          });
+      });
+    language: text/javascript
+examples: './.resources/List all users.resources/examples'
 order: 1000
