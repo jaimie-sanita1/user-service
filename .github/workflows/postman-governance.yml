@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'users.yaml'
+  workflow_dispatch:
 
 jobs:
   lint-spec:
