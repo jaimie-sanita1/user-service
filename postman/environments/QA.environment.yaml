@@ -1,6 +1,6 @@
 name: QA
 values:
   - key: baseUrl
-    value: 'https://api-qa.example.com'
+    value: 'http://localhost:4500'
     enabled: true
 color: 120
