@@ -1,6 +1,6 @@
 name: QA
 values:
   - key: baseUrl
-    value: 'http://localhost:4500'
+    value: 'https://b00c1cc5-7632-487d-8579-d8ae5d1af308.mock.pstmn.io'
     enabled: true
 color: 120
