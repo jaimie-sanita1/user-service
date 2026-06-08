@@ -10,6 +10,8 @@ request:
 response:
   statusCode: 204
   statusText: No Content
+  headers:
+    Content-Type: application/json
   body:
     type: text
     content: ""
