@@ -1,7 +1,7 @@
 {
-  "id": "3ac5544b-4136-462d-833b-986b248618c4",
+  "id": "ab4c65dc-350e-4f70-9318-5cc0470d8557",
   "version": 1,
-  "name": "Users API Mock",
+  "name": "users-mock",
   "protocol": "http",
   "port": 4500,
   "mockSrc": "./mock.js",
