@@ -1,0 +1,269 @@
+{
+  "entityId": "2F4eC06d87dC02B47bC6deB4",
+  "entityType": "collections",
+  "buildId": 3512,
+  "createdAt": "2026-04-30T14:30:35.270Z",
+  "downloads": [
+    {
+      "language": "java",
+      "status": "success",
+      "createdAt": "2026-04-30T14:30:35.285Z",
+      "link": "https://us-prod-sdk-gen-api-code-gen-uploads.s3.us-east-1.amazonaws.com/b296f197-41a6-49da-a37c-295c07ef00c1/users-sdk-java-1.0.0.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LJBU7AHTNAOPR%2F20260430%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260430T143053Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEEcaCXVzLWVhc3QtMSJHMEUCIQDB%2FBwHj%2Br0bBM7ndi7Q9h9LToz4HN3IEHZd9J22gg5UQIgTLyWz%2FwHJOedWHIcGOD4xyxY07E7HUfwgfxJXmtou94qkwUIEBAAGgw2Mzc0MjM2NTIxNTgiDI%2FbVihWHqcHaAsY1SrwBC1FbYMFOsaBq%2FUyUoEp1m3rbeJapY%2F9sPcllWqqM%2B47PvmclZv6PWYljr0VH3yFUwG0fNsi1EByszB3oZK8DNMBje2HpvHbElSGbvGh%2BuKUJnJ9HfwvNAQH1QBzp0j4QYV5bXvksQ48genUd9ZzpC8hoOLQGlleT18LLcGJMk5S02KeIljCdgZmLaKmeqrckWe4vAFmHVIteySFbggUm%2FJ%2FUcBGtgnc0sjihIRu8J9%2FiQsP6ehZuypoU3%2BLvs4wFH%2FLS7paALtSiuu8EB8QD13SNECNgT2Wvb1uu6WIsF6U3DSk7jrd%2BbAj02pvESrxOxni%2BrP5CBjWRRGM6lI72aVTf5t9iTq6AyOehluLrXlE8v7ugGXpMVpA6Bb9BH8CyOxwnwEh19LY6jHPBpcOoNMnOHdBM7fTiBhVne4NrPkqrEdQnD1Q3b1qjux52Em9zjh0SCj7sFoeMJSE9ekKKF0aLsVFzCmwPrvRpL57haPnNxU9tWv1Vn0ugGNdOgzTP0orLZPmPUkLC1D0mMvkRNyFb9WUR5RiDWGaf7ao3oMeZ5IesFIkTkKLqu5Lm3Vph7YrrOFFAeTKAJuSKG9OF879kvPTvTMelNP4LRayW6fLnUhM%2BWnLHyBNinBrRFPDF4s784ixb67M2P9T0wVk%2F9d6%2BJx2%2FZ2pIKOaRbp4ASwEGIs29Bx11hYkJ8GFaHUNk6AhXg9Eptilsvv9lZZ7PouYUxmc%2BINsHwiyEw1oNyWjMnzS%2BlI474Xe8n%2FV%2B5KjStZL2YAfhgniCjXjEB6dC3aPv2CJ3ZI9eQW2gXbGzKMKXWJxFtijYiig5p78DWnpUjCFy83PBjqZAZhVnLHAZyFdbueMwzgHY5KRzSZG7UKuwW%2Bi4%2BasyE238Yq2nNpf81G%2Byq611qETTTa6bb%2Bq3yySY8sdX61zqpUsOvkrUwVikfm3ubrZUfHmIRZU681YUNlTmfRiSYWkxTCBymgS4pEqq3pQ39dCRlC%2FfHQP%2FdZzsZ9pTQFkNBTjKnnuvQdoDix8F%2FpltT3s6fA5ck%2BOYiZqCA%3D%3D&X-Amz-Signature=ff4799ae4a508954e31495d51863dee0eeb993e724b6d7cc1935785b433e50f2&X-Amz-SignedHeaders=host&x-id=GetObject",
+      "contentHash": "d3fe02e2db0c1f1ffac77b991c87b13b701bb6656f4e32eb8fb141ec18f20acc",
+      "logs": [
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Get a user by ID",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Get a user by ID",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Get a user by ID",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Get a user by ID",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collection does not specify if the request body is required, so the SDK requires a request body by default.",
+          "severity": "INFO",
+          "path": "users/{id}/Update a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Delete a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Delete a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/Delete a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/Delete a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/A short summary of what the operation does",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/A short summary of what the operation does",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/{id}/A short summary of what the operation does",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/{id}/A short summary of what the operation does",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/List all users",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/List all users",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "All header, cookie, path, and query parameters default to string since Postman does not specify the type.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Parameters, properties, and request bodies default to nullable since Postman collections do not specify nullability. Some fields may be incorrectly marked as nullable.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collections do not represent whether a property is required or optional. The SDK Generator will generate this property as optional.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        },
+        {
+          "message": "Postman collection does not specify if the request body is required, so the SDK requires a request body by default.",
+          "severity": "INFO",
+          "path": "users/Create a user",
+          "createdAt": "2026-04-30T14:30:41.464Z"
+        }
+      ]
+    }
+  ]
+}

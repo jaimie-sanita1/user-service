@@ -1,0 +1,27 @@
+{
+  "endpoints": {
+    "/users/{id}": {
+      "get": "import com.userssdk.UsersSdk;\nimport com.userssdk.models.GetAUserByIdParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tUsersSdk usersSdk = new UsersSdk();\n\n\t\tGetAUserByIdParameters requestParameters = GetAUserByIdParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.build();\n\n\t\tObject response = usersSdk.id.getAUserById(\"id\", requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "put": "import com.userssdk.UsersSdk;\nimport com.userssdk.models.UpdateAUserParameters;\nimport com.userssdk.models.UpdateAUserRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tUsersSdk usersSdk = new UsersSdk();\n\n\t\tUpdateAUserRequest updateAUserRequest = UpdateAUserRequest.builder()\n\t\t\t.name(\"Jane Smith\")\n\t\t\t.email(\"jane.smith@example.com\")\n\t\t\t.role(\"admin\")\n\t\t\t.status(\"active\")\n\t\t\t.build();\n\t\t\n\t\tUpdateAUserParameters requestParameters = UpdateAUserParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.requestBody(updateAUserRequest)\n\t\t\t.build();\n\n\t\tObject response = usersSdk.id.updateAUser(\"id\", requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "delete": "import com.userssdk.UsersSdk;\nimport com.userssdk.models.DeleteAUserParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tUsersSdk usersSdk = new UsersSdk();\n\n\t\tDeleteAUserParameters requestParameters = DeleteAUserParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.build();\n\n\t\tObject response = usersSdk.id.deleteAUser(\"id\", requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "post": "import com.userssdk.UsersSdk;\nimport com.userssdk.models.AShortSummaryOfWhatTheOperationDoesParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tUsersSdk usersSdk = new UsersSdk();\n\n\t\tAShortSummaryOfWhatTheOperationDoesParameters requestParameters = AShortSummaryOfWhatTheOperationDoesParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.build();\n\n\t\tObject response = usersSdk.id.aShortSummaryOfWhatTheOperationDoes(\"id\", requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    },
+    "/users": {
+      "get": "import com.userssdk.UsersSdk;\nimport com.userssdk.models.ListAllUsersParameters;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tUsersSdk usersSdk = new UsersSdk();\n\n\t\tListAllUsersParameters requestParameters = ListAllUsersParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.build();\n\n\t\tObject response = usersSdk.users.listAllUsers(requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n",
+      "post": "import com.userssdk.UsersSdk;\nimport com.userssdk.models.CreateAUserParameters;\nimport com.userssdk.models.CreateAUserRequest;\n\npublic class Main {\n    public static void main(String[] args) {\n\t\tUsersSdk usersSdk = new UsersSdk();\n\n\t\tCreateAUserRequest createAUserRequest = CreateAUserRequest.builder()\n\t\t\t.name(\"John Doe\")\n\t\t\t.email(\"john.doe@example.com\")\n\t\t\t.role(\"member\")\n\t\t\t.status(\"active\")\n\t\t\t.build();\n\t\t\n\t\tCreateAUserParameters requestParameters = CreateAUserParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.requestBody(createAUserRequest)\n\t\t\t.build();\n\n\t\tObject response = usersSdk.users.createAUser(requestParameters);\n\t\t\t\n\t\tSystem.out.println(response);\n    }\n}\n"
+    }
+  },
+  "methodResponses": {
+    "/users/{id}": {
+      "get": "System.out.println(response);",
+      "put": "System.out.println(response);",
+      "delete": "System.out.println(response);",
+      "post": "System.out.println(response);"
+    },
+    "/users": {
+      "get": "System.out.println(response);",
+      "post": "System.out.println(response);"
+    }
+  },
+  "example": "import com.userssdk.UsersSdk;\nimport com.userssdk.exceptions.ApiError;\nimport com.userssdk.models.ListAllUsersParameters;\n  \npublic class Main {\n  public static void main(String[] args) {\n    UsersSdk usersSdk = new UsersSdk();\n\n    ListAllUsersParameters requestParameters = ListAllUsersParameters.builder()\n\t\t\t.accept(\"application/json\")\n\t\t\t.build();\n\n\n    try {\n      Object response = usersSdk.users.listAllUsers(requestParameters);\n        \n      System.out.println(response);\n    } catch (ApiError e) {\n      e.printStackTrace();\n    }\n\n    System.exit(0);\n  }\n}\n"
+}
