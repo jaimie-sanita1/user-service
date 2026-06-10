@@ -1,7 +1,5 @@
-# Use this workspace to collaborate
 workspace:
   id: 83761f22-e042-47eb-9fa9-51f53acf2d6c
-
 localResources:
   specs:
     - ../users.yaml
@@ -11,9 +9,6 @@ localResources:
     - ../postman/environments/Production.environment.yaml
     - ../postman/environments/QA.environment.yaml
     - ../postman/environments/Staging.environment.yaml
-
-# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
-
 cloudResources:
   specs:
     ../users.yaml: 01c6325b-4314-4aa9-8a31-5ee4980f9647

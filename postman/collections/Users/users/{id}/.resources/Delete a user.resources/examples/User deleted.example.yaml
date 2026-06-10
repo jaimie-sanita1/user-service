@@ -12,8 +12,6 @@ response:
   statusText: No Content
   headers:
     Content-Type: application/json
-    X-Content-Type-Options: nosniff
-    X-Frame-Options: DENY
   body:
     type: text
     content: ""

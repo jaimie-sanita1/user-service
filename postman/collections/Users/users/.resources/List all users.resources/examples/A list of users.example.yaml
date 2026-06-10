@@ -12,8 +12,6 @@ response:
   statusText: OK
   headers:
     Content-Type: application/json
-    X-Content-Type-Options: nosniff
-    X-Frame-Options: DENY
   body:
     type: json
     content: |-
@@ -35,51 +33,4 @@ response:
           "createdAt": "<dateTime>"
         }
       ]
-    $type: |-
-      {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "string",
-              "description": "Unique identifier for the user"
-            },
-            "name": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string",
-              "format": "email"
-            },
-            "role": {
-              "type": "string",
-              "enum": [
-                "admin",
-                "member"
-              ]
-            },
-            "status": {
-              "type": "string",
-              "enum": [
-                "active",
-                "inactive",
-                "suspended"
-              ]
-            },
-            "createdAt": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          "required": [
-            "id",
-            "name",
-            "email",
-            "role",
-            "status",
-            "createdAt"
-          ]
-        }
-      }
 order: 1000

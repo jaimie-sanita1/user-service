@@ -13,7 +13,7 @@ request:
       {
         "name": "string",
         "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
-        "role": "member",
+        "role": "admin",
         "status": "active"
       }
 response:
@@ -21,8 +21,6 @@ response:
   statusText: OK
   headers:
     Content-Type: application/json
-    X-Content-Type-Options: nosniff
-    X-Frame-Options: DENY
   body:
     type: json
     content: |-
@@ -32,51 +30,6 @@ response:
         "email": "jane.smith@example.com",
         "role": "admin",
         "status": "active",
-        "createdAt": "2010-03-11T06:12:56.098Z",
-        "updatedAt": "2024-01-15T10:30:00Z"
-      }
-    $type: |-
-      {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Unique identifier for the user"
-          },
-          "name": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string",
-            "format": "email"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "member"
-            ]
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "active",
-              "inactive",
-              "suspended"
-            ]
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "email",
-          "role",
-          "status",
-          "createdAt"
-        ]
+        "createdAt": "2010-03-11T06:12:56.098Z"
       }
 order: 1000
