@@ -9,3 +9,8 @@ workflows:
       collection: ../postman/collections/Users
       options:
         syncExamples: false
+  syncCollectionToSpec:
+    - spec: ../users.yaml
+      collection: ../postman/collections/Users
+      options:
+        syncExamples: false
