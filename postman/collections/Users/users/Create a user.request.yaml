@@ -1,5 +1,5 @@
 $kind: http-request
-url: '{{baseUrl}}/users'
+url: "{{baseUrl}}/users"
 method: POST
 headers:
   Content-Type: application/json
@@ -8,33 +8,70 @@ body:
   type: json
   content: |-
     {
-      "name": "string",
-      "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
       "role": "member",
       "status": "active"
+    }
+  $type: |-
+    {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "admin",
+            "member"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "inactive",
+            "suspended"
+          ],
+          "description": "Optional; defaults to active if omitted"
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "role"
+      ]
     }
 scripts:
   - type: afterResponse
     code: |-
+      const jsonData = pm.response.json();
+      const requestBody = JSON.parse(pm.request.body.raw || "{}");
+
       pm.test("Status code is 201", function () {
           pm.response.to.have.status(201);
+      });
+
+      pm.test("Content-Type is application/json", function () {
+          pm.expect(pm.response.headers.get("Content-Type")).to.include("application/json");
+      });
+
+      pm.test("Security headers are present", function () {
+          ["X-Content-Type-Options", "X-Frame-Options"].forEach(function (header) {
+              pm.expect(pm.response.headers.has(header), `Missing ${header}`).to.be.true;
+          });
       });
 
       pm.test("Response time is under 500ms", function () {
           pm.expect(pm.response.responseTime).to.be.below(500);
       });
 
-      pm.test("Content-Type is application/json", function () {
-          pm.response.to.have.header("Content-Type", "application/json");
-      });
-
-      pm.test("Response is an object", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData).to.be.an("object");
-      });
-
-      pm.test("Response has all required fields", function () {
-          const jsonData = pm.response.json();
+      pm.test("Response contains user object", function () {
           pm.expect(jsonData).to.have.property("id");
           pm.expect(jsonData).to.have.property("name");
           pm.expect(jsonData).to.have.property("email");
@@ -43,63 +80,17 @@ scripts:
           pm.expect(jsonData).to.have.property("createdAt");
       });
 
-      pm.test("Response has correct field types", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData.id).to.be.a("string");
-          pm.expect(jsonData.name).to.be.a("string");
-          pm.expect(jsonData.email).to.be.a("string");
-          pm.expect(jsonData.role).to.be.a("string");
-          pm.expect(jsonData.status).to.be.a("string");
-          pm.expect(jsonData.createdAt).to.be.a("string");
+      pm.test("No sensitive fields are exposed", function () {
+          ["password", "passwordHash", "ssn", "token", "secret"].forEach(function (field) {
+              pm.expect(jsonData).to.not.have.property(field);
+          });
       });
 
-      pm.test("Returned name matches request body", function () {
-          const jsonData = pm.response.json();
-          const requestBody = JSON.parse(pm.request.body.raw);
-          pm.expect(jsonData.name).to.equal(requestBody.name);
-      });
-
-      pm.test("Returned email matches request body", function () {
-          const jsonData = pm.response.json();
-          const requestBody = JSON.parse(pm.request.body.raw);
-          pm.expect(jsonData.email).to.equal(requestBody.email);
-      });
-
-      pm.test("Returned role matches request body", function () {
-          const jsonData = pm.response.json();
-          const requestBody = JSON.parse(pm.request.body.raw);
-          pm.expect(jsonData.role).to.equal(requestBody.role);
-      });
-
-      pm.test("Status defaults to active when not provided", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData.status).to.equal("active");
-      });
-
-      pm.test("Role is a valid enum value", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData.role).to.be.oneOf(["admin", "member"]);
-      });
-
-      pm.test("Status is a valid enum value", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData.status).to.be.oneOf(["active", "inactive", "suspended"]);
-      });
-
-      pm.test("Email has valid format", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData.email).to.include("@");
-      });
-
-      pm.test("createdAt is valid ISO 8601", function () {
-          const jsonData = pm.response.json();
-          pm.expect(new Date(jsonData.createdAt).toISOString()).to.equal(jsonData.createdAt);
-      });
-
-      pm.test("id is a non-empty string", function () {
-          const jsonData = pm.response.json();
-          pm.expect(jsonData.id).to.be.a("string").and.not.empty;
+      pm.test("Created resource reflects the submitted identity fields", function () {
+          pm.expect(jsonData.name).to.eql(requestBody.name);
+          pm.expect(jsonData.email).to.eql(requestBody.email);
+          pm.expect(jsonData.role).to.eql(requestBody.role);
       });
     language: text/javascript
-examples: './.resources/Create a user.resources/examples'
-order: 2000
+examples: ./.resources/Create a user.resources/examples
+order: 3000

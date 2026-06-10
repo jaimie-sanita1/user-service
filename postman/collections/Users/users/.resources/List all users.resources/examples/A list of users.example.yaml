@@ -13,24 +13,71 @@ response:
   headers:
     Content-Type: application/json
   body:
-    type: text
+    type: json
     content: |-
       [
         {
           "id": "<string>",
           "name": "<string>",
           "email": "<email>",
-          "role": "member",
-          "status": "suspended",
+          "role": "admin",
+          "status": "inactive",
           "createdAt": "<dateTime>"
         },
         {
           "id": "<string>",
           "name": "<string>",
           "email": "<email>",
-          "role": "member",
-          "status": "inactive",
+          "role": "admin",
+          "status": "suspended",
           "createdAt": "<dateTime>"
         }
       ]
+    $type: |-
+      {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier for the user"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "admin",
+                "member"
+              ]
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive",
+                "suspended"
+              ]
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "email",
+            "role",
+            "status",
+            "createdAt"
+          ]
+        }
+      }
 order: 1000

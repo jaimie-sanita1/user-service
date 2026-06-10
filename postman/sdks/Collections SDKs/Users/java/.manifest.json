@@ -1,0 +1,279 @@
+{
+  "liblabVersion": "1.1.2",
+  "date": "2026-04-30T14:30:35.590Z",
+  "config": {
+    "languages": [
+      "java"
+    ],
+    "deliveryMethods": [
+      "zip"
+    ],
+    "languageOptions": {
+      "python": {
+        "alwaysInitializeOptionals": false,
+        "pypiPackageName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "typescript": {
+        "bundle": true,
+        "exportClassDefault": false,
+        "httpClient": "fetch",
+        "npmName": "",
+        "npmOrg": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "generateEnumAs": "union"
+      },
+      "go": {
+        "goModuleName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "java": {
+        "groupId": "com",
+        "artifactId": "userssdk",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "php": {
+        "composerVendorName": "",
+        "composerPackageName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "csharp": {
+        "ignoreFiles": [],
+        "liblabVersion": "2",
+        "renameIllegalModelProperties": true,
+        "useOptionalWrapper": true,
+        "validateResponses": false
+      },
+      "cli": {
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "kotlin": {
+        "groupId": "",
+        "artifactId": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "ruby": {
+        "gemName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      },
+      "rust": {
+        "packageName": "",
+        "githubRepoName": "",
+        "ignoreFiles": [],
+        "liblabVersion": "2"
+      }
+    },
+    "includeWatermark": false,
+    "responseHeaders": false,
+    "sdkName": "users-sdk",
+    "sdkVersion": "1.0.0",
+    "customCode": {
+      "trackChanges": true
+    },
+    "groupId": "com",
+    "artifactId": "userssdk",
+    "ignoreFiles": [],
+    "liblabVersion": "2",
+    "language": "java",
+    "deliveryMethod": "zip",
+    "hooks": {
+      "enabled": false,
+      "sourceDir": ""
+    },
+    "validateResponses": false,
+    "usesFormData": false,
+    "authentication": {},
+    "environmentVariables": [],
+    "fileOutput": "/tmp",
+    "inferServiceNames": false,
+    "httpLibrary": {
+      "name": "axios",
+      "packages": {
+        "axios": "^1.13.2"
+      },
+      "languages": [
+        "typescript"
+      ]
+    },
+    "auth": [],
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150,
+      "maxDelay": 5000,
+      "retryDelayJitter": 50,
+      "backOffFactor": 2,
+      "httpMethodsToRetry": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "PATCH",
+        "HEAD",
+        "OPTIONS"
+      ]
+    },
+    "multiTenant": false,
+    "customQueries": {
+      "paths": [],
+      "rawQueries": [],
+      "queriesData": []
+    },
+    "devContainer": false,
+    "ai": false,
+    "includeOptionalSnippetParameters": true,
+    "specType": "postman",
+    "deprecatedOperations": {
+      "include": true
+    },
+    "multipleResponses": {
+      "enabled": false
+    }
+  },
+  "files": [
+    "pom.xml",
+    ".gitignore",
+    "src/main/java/com/userssdk/validation/Violation.java",
+    "src/main/java/com/userssdk/validation/ViolationAggregator.java",
+    "src/main/java/com/userssdk/validation/validators/AbstractValidator.java",
+    "src/main/java/com/userssdk/validation/validators/ListValidator.java",
+    "src/main/java/com/userssdk/validation/validators/NumericValidator.java",
+    "src/main/java/com/userssdk/validation/validators/StringValidator.java",
+    "src/main/java/com/userssdk/validation/validators/Validator.java",
+    "src/main/java/com/userssdk/validation/validators/modelValidators/AbstractModelValidator.java",
+    "src/main/java/com/userssdk/validation/exceptions/ValidationException.java",
+    "src/main/java/com/userssdk/services/BaseService.java",
+    "src/main/java/com/userssdk/http/HttpMethod.java",
+    "src/main/java/com/userssdk/http/ModelConverter.java",
+    "src/main/java/com/userssdk/http/util/ContentTypes.java",
+    "src/main/java/com/userssdk/http/util/HttpArgumentConverter.java",
+    "src/main/java/com/userssdk/http/serialization/PathSerializationStyle.java",
+    "src/main/java/com/userssdk/http/serialization/QuerySerializationStyle.java",
+    "src/main/java/com/userssdk/http/serialization/SerializationStyle.java",
+    "src/main/java/com/userssdk/http/serialization/Serializer.java",
+    "src/main/java/com/userssdk/http/serialization/Util.java",
+    "src/main/java/com/userssdk/http/interceptors/DefaultHeadersInterceptor.java",
+    "src/main/java/com/userssdk/exceptions/ApiError.java",
+    "src/main/java/com/userssdk/http/Environment.java",
+    "src/main/java/com/userssdk/UsersSdk.java",
+    "src/main/java/com/userssdk/http/interceptors/RetryInterceptor.java",
+    "src/main/java/com/userssdk/config/RetryConfig.java",
+    "src/main/java/com/userssdk/config/UsersSdkConfig.java",
+    "src/main/java/com/userssdk/config/RequestConfig.java",
+    "documentation/snippets/snippets.json",
+    "documentation/models/GetAUserByIdParameters.md",
+    "documentation/models/UpdateAUserRequest.md",
+    "documentation/models/UpdateAUserParameters.md",
+    "documentation/models/DeleteAUserParameters.md",
+    "documentation/models/AShortSummaryOfWhatTheOperationDoesParameters.md",
+    "documentation/models/ListAllUsersParameters.md",
+    "documentation/models/CreateAUserRequest.md",
+    "documentation/models/CreateAUserParameters.md",
+    "src/main/java/com/userssdk/json/TypeUtils.java",
+    "examples/pom.xml",
+    "examples/run.sh",
+    "examples/src/main/java/com/example/Main.java",
+    "examples/.gitignore",
+    ".idea/workspace.xml",
+    ".idea/misc.xml",
+    ".idea/compiler.xml",
+    ".idea/encoding.xml",
+    ".idea/jarRepositories.xml",
+    "src/main/java/com/userssdk/http/util/RequestBuilder.java",
+    "examples/README.md",
+    ".env.example",
+    "documentation/services/UsersService.md",
+    "src/main/java/com/userssdk/models/GetAUserByIdParameters.java",
+    "src/main/java/com/userssdk/models/DeleteAUserParameters.java",
+    "src/main/java/com/userssdk/models/AShortSummaryOfWhatTheOperationDoesParameters.java",
+    "src/main/java/com/userssdk/models/ListAllUsersParameters.java",
+    "documentation/services/IdService.md",
+    "src/main/java/com/userssdk/models/UpdateAUserRequest.java",
+    "src/main/java/com/userssdk/models/UpdateAUserParameters.java",
+    "src/main/java/com/userssdk/models/CreateAUserRequest.java",
+    "src/main/java/com/userssdk/models/CreateAUserParameters.java",
+    "src/main/java/com/userssdk/services/UsersService.java",
+    "README.md",
+    "src/main/java/com/userssdk/services/IdService.java"
+  ],
+  "fileHashes": {
+    ".env.example": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".gitignore": "16c2381047d584e96eb9c89da75b41f24abb5df5e1b9b770321ef9bf9f46b7b4",
+    ".idea/compiler.xml": "d4b3c50d88d994f6b45771590618d6bb974dd4686aee2207f98e4f2d6425f438",
+    ".idea/encoding.xml": "c08731aff01601ae1dce0f19fe8f058b750a167cdef4fb92b8ba104eeb7ec038",
+    ".idea/jarRepositories.xml": "9c794caa37d870d809db42aa629d5232e5f1a9a76593a28a55898244ecbc75a2",
+    ".idea/misc.xml": "042abf22dfaa2dc7e5f3d7956f778c18bdfb7404f4a9bddd388d49e48e00f90e",
+    ".idea/workspace.xml": "99259463f968c9e70730824985abc143c8cf19699b324f70f4e7312dde5f9c53",
+    "README.md": "5db9bc15e77341d16cca07e02e2a53e341b6d522a31e2a0a5ec3a79e12e61630",
+    "documentation/models/AShortSummaryOfWhatTheOperationDoesParameters.md": "6e09bcb15f29ef8e284b29bd40c81365a1480a46d5746688dbfd22b76806a6fb",
+    "documentation/models/CreateAUserParameters.md": "caee0604b4f34a0c17ebd158bc4c27d191cb72027b3454581df75f8d451e804b",
+    "documentation/models/CreateAUserRequest.md": "ae171e2b12af4b3145c3c759d301af5a6ca9c0f8263165f65c242602525edaf1",
+    "documentation/models/DeleteAUserParameters.md": "1b4ce9abc87c63be514e9cb61cd606f71a24fc98f1e49331de39408e7e2cedac",
+    "documentation/models/GetAUserByIdParameters.md": "5a11b441bdb74f3e0cd0414fcd28e54e0f71f481640bd815656052eb3614d713",
+    "documentation/models/ListAllUsersParameters.md": "cbcb88471d65954b48dbeaa90d046e7aedcba9b65be059776dde60c5e9e296d3",
+    "documentation/models/UpdateAUserParameters.md": "9d3ad9e6fd7fb4166d5e6b8cf39d440298f4e53a84761cda1c03648b4ff57048",
+    "documentation/models/UpdateAUserRequest.md": "99bf573a14a5d0412d4e0d821911e2327f246a2b9b46f233407c4da1f3a72fa9",
+    "documentation/services/IdService.md": "d2d7d05ce50dee8ccb0d96b25875d12e3ac9328546d682bf66f03457312956d5",
+    "documentation/services/UsersService.md": "488507456f7b07a881a7fd26605dc9d6e3af6abf079a1031e647c3b0775e43e5",
+    "documentation/snippets/snippets.json": "b2ce1241f9b02b427bac608d48947fc868e041738c0a942598b1660271e31af1",
+    "examples/.gitignore": "16c2381047d584e96eb9c89da75b41f24abb5df5e1b9b770321ef9bf9f46b7b4",
+    "examples/README.md": "b12abf0bcae47f7df46f5c55b9661303c3599dd38b075c511c0c11bfc3872da1",
+    "examples/pom.xml": "547601d5c6b1f932c7e14d1f4ba21a092f878a53666a4b1cb5f64cab4fb1fdf9",
+    "examples/run.sh": "b421122e2d707b60e35b125a39a47dd9b1bec16d241aec1ba5a7357816e4757b",
+    "examples/src/main/java/com/example/Main.java": "856960ca180324a9f18fce77da3307f36360d04d34008f4426fea8ff55a6ba74",
+    "pom.xml": "ffc6d764f8367cbde88843799569c3dea74c20d1b32919df41b410f5800a54c0",
+    "prettier.config.js": "2fe33fda52344779fcf235afa8152cfd356880dc3161da09403dc26231bc72d9",
+    "src/main/java/com/userssdk/UsersSdk.java": "2364e30b5adc77de5265f01b49e46485d1ed35c2db87e75ee93935755c9171eb",
+    "src/main/java/com/userssdk/config/RequestConfig.java": "18e8c7935d4853213e2d489dea1a87c6c896dc5802905a3b9de8404e46e36ffc",
+    "src/main/java/com/userssdk/config/RetryConfig.java": "efe5068c6d96ea2439c76fc1252e3a5599d24025e251ad139b3393d5b7496019",
+    "src/main/java/com/userssdk/config/UsersSdkConfig.java": "e00b0089d4d8ee6191b2e2d4aa27b61ce88d552ac0ba8ac72b86e6376bf747bf",
+    "src/main/java/com/userssdk/exceptions/ApiError.java": "fb81eaccb1684467c9da6d0f204b8d02d88e10523fcd3e739323ae9c59f2a16b",
+    "src/main/java/com/userssdk/http/Environment.java": "c0136c39ae3aa37d4bd102f3c23eaf9fedc2fe0d12fdc55ff3e40ce7a1fbe709",
+    "src/main/java/com/userssdk/http/HttpMethod.java": "cd5c46b3d542efdd675d92ee1197184a144d933aad9054d1051fcf2b59de67ef",
+    "src/main/java/com/userssdk/http/ModelConverter.java": "c51ea60ba177f30e7ef85d5a69b4222e8a9f2f41ca2534715d1bd55427a3e9a8",
+    "src/main/java/com/userssdk/http/interceptors/DefaultHeadersInterceptor.java": "ca815ef1b02f7cae53c5306f43a3317267f048a1bc8557bcf1f5a5f34cbc90c3",
+    "src/main/java/com/userssdk/http/interceptors/RetryInterceptor.java": "8c2c2ba40a10ed6b23c3c86c9e5220a1fe8b3164742ae0724044559c2093199a",
+    "src/main/java/com/userssdk/http/serialization/PathSerializationStyle.java": "3e372f97901d684f8f9ca45eaf497ecdf08ade26d111eb4071186a832a648ae3",
+    "src/main/java/com/userssdk/http/serialization/QuerySerializationStyle.java": "a7b1563289cac251574ef321c37e8875b503d864b13879271e5dbcfe075c5337",
+    "src/main/java/com/userssdk/http/serialization/SerializationStyle.java": "c5a3cf8f68a03a00094b538844576153c9a73fd2483119564fb3c37e07c5844b",
+    "src/main/java/com/userssdk/http/serialization/Serializer.java": "dc66dca0b0fb15e40c9d1724ab4104936bb1e8bf1c24deaf196e4bf36a5c9244",
+    "src/main/java/com/userssdk/http/serialization/Util.java": "32fe5fb53aebe28a912ad06b20de6363668d00705177e67c3f0854b8f6a587d0",
+    "src/main/java/com/userssdk/http/util/ContentTypes.java": "bfdf1514459ac825b6546c57711b7893cca115b69c4dc83ed4a6dfee22de1c26",
+    "src/main/java/com/userssdk/http/util/HttpArgumentConverter.java": "c3ddbe7e48da68ef61571792fbfa5595d9c330fe0f63662d299944d5346f21d0",
+    "src/main/java/com/userssdk/http/util/RequestBuilder.java": "b5168c1a6ef718685e29e7e9402fdb1677c2fa5805fcf29ed6018012e0082d4e",
+    "src/main/java/com/userssdk/json/TypeUtils.java": "e311882f065f055e6a2e14ba78c3d39036593be066579309fd403d9342acbfe4",
+    "src/main/java/com/userssdk/models/AShortSummaryOfWhatTheOperationDoesParameters.java": "b2cc79f813779bb5fb7cde06991dacc883211989b5c3092e68874bb3eed79c09",
+    "src/main/java/com/userssdk/models/CreateAUserParameters.java": "ace78bb86e1c954493d56a583434c22cb82514fba21ed6c93c823cf1c264f999",
+    "src/main/java/com/userssdk/models/CreateAUserRequest.java": "b0bcc37af136c33a7612b9e2a87571db321e704b065dc16c592b02b6caef504a",
+    "src/main/java/com/userssdk/models/DeleteAUserParameters.java": "66321b9ab856b981d16ebc6150a33232e82df104c6b54b3be64c43402ffe7988",
+    "src/main/java/com/userssdk/models/GetAUserByIdParameters.java": "252e2167ed1ec19348f4f8d29a12bfa83eb2253488a6a0b46896c8130cd97bad",
+    "src/main/java/com/userssdk/models/ListAllUsersParameters.java": "677250b391a911877cf2eaa0a6de2db52fe8188e0628a622418a0b8774dee891",
+    "src/main/java/com/userssdk/models/UpdateAUserParameters.java": "3964dbf41d46519acbbe55f834da738020b954a5971d0cce3303b3a9aa490613",
+    "src/main/java/com/userssdk/models/UpdateAUserRequest.java": "7d2edbf5dddaa0945fae625a4552c1a9f480b68a5c304717b9419651cf569ba0",
+    "src/main/java/com/userssdk/services/BaseService.java": "8e7519c95db713d1ce0271ded3260d54a3a573d0eccd51df2e214b811adb564c",
+    "src/main/java/com/userssdk/services/IdService.java": "af04ce4c93de7b2dd446fafee7eb729edf754c6f124008e46a174ea0a82bd579",
+    "src/main/java/com/userssdk/services/UsersService.java": "9de6e7f0fe74a56dab625114ebedd30e24cee5ef0a20fe6428ff6eb0777fe5f6",
+    "src/main/java/com/userssdk/validation/Violation.java": "2253e9830d1610e9002e705f1de4bef1199126767db8e4edb4b859c68df3d2f6",
+    "src/main/java/com/userssdk/validation/ViolationAggregator.java": "15f6b56f27267e7a7fe7c2281cb5947505539a3f48b63d77161ea46ede526fa5",
+    "src/main/java/com/userssdk/validation/exceptions/ValidationException.java": "7e91b6959736dce9898255e17ab3bfa506a67f916dfed0c0ef72df2fda5772b0",
+    "src/main/java/com/userssdk/validation/validators/AbstractValidator.java": "d07794bad4c0cc5b3361da1bc5573a92ec46f98f70709142c360ea5f3ab695ac",
+    "src/main/java/com/userssdk/validation/validators/ListValidator.java": "7c7bf88ca8c049581abe1718c4b75f6dba7a1107cbb2d2ce7ff5bbc2d864d194",
+    "src/main/java/com/userssdk/validation/validators/NumericValidator.java": "5ae4b0f3aded879c642f3b596f96564b07c3c2b44d0333dc314ef5eb007a79fb",
+    "src/main/java/com/userssdk/validation/validators/StringValidator.java": "1930d168c958401b1dc631424acf089e62145c434d87f98dfcd9ad9ef9c485cd",
+    "src/main/java/com/userssdk/validation/validators/Validator.java": "f1d8b435335aad59c3b4e237f3203bd0a6fdcf71db4ee84909c78a1181f0151a",
+    "src/main/java/com/userssdk/validation/validators/modelValidators/AbstractModelValidator.java": "4574a032c29b4cab0fdbf79bad4ed474c1bf4cec0438aeed2ea0f3a70383898b"
+  }
+}

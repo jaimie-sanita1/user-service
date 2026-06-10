@@ -2,8 +2,6 @@ openapi: 3.0.0
 info:
   title: Users API
   version: 1.0.0
-  description: A simple API for managing users
-
 paths:
   /users:
     get:
@@ -87,7 +85,6 @@ paths:
           description: User deleted
         '404':
           description: User not found
-
 components:
   schemas:
     User:

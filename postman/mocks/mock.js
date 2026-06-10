@@ -1,21 +1,32 @@
 const http = require("http");
 
-// In-memory user store pre-seeded with sample data
-let users = [
-  { id: "1", name: "Alice Johnson", email: "alice@example.com", role: "admin", status: "active", createdAt: "2026-01-15T10:30:00.000Z" },
-  { id: "2", name: "Bob Smith", email: "bob@example.com", role: "member", status: "active", createdAt: "2026-02-20T14:45:00.000Z" },
-  { id: "3", name: "Carol Davis", email: "carol@example.com", role: "member", status: "inactive", createdAt: "2026-03-01T09:00:00.000Z" }
-];
+const SECURITY_HEADERS = {
+  "Content-Type": "application/json",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+};
 
-let nextId = 4;
+function sendJSON(res, statusCode, body) {
+  const payload = JSON.stringify(body);
+  res.writeHead(statusCode, SECURITY_HEADERS);
+  res.end(payload);
+}
 
-function parseBody(req) {
+function sendEmpty(res, statusCode) {
+  res.writeHead(statusCode, {
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+  });
+  res.end();
+}
+
+function readBody(req) {
   return new Promise((resolve, reject) => {
-    let body = "";
-    req.on("data", chunk => (body += chunk));
+    let data = "";
+    req.on("data", (chunk) => (data += chunk));
     req.on("end", () => {
       try {
-        resolve(body ? JSON.parse(body) : {});
+        resolve(data ? JSON.parse(data) : {});
       } catch (e) {
         reject(e);
       }
@@ -24,99 +35,138 @@ function parseBody(req) {
   });
 }
 
-function sendJSON(res, statusCode, data) {
-  res.writeHead(statusCode, { "Content-Type": "application/json" });
-  res.end(JSON.stringify(data));
+function sanitizeUser(user) {
+  // Omit sensitive fields (e.g. password, passwordHash, secret)
+  const { password, passwordHash, secret, ...safe } = user;
+  return safe;
 }
 
-function extractUserId(url) {
-  const match = url.match(/^\/users\/([^/?]+)/);
-  return match ? match[1] : null;
+function generateId() {
+  return (
+    Math.random().toString(36).substring(2, 10) +
+    Math.random().toString(36).substring(2, 10)
+  );
 }
 
 const server = http.createServer(async (req, res) => {
-  const { method } = req;
-  const url = req.url.split("?")[0];
+  const method = req.method.toUpperCase();
+  const rawUrl = req.url || "/";
+  const urlObj = new URL(rawUrl, "http://localhost");
+  const pathname = urlObj.pathname;
 
   // @endpoint GET /users
-  if (method === "GET" && url === "/users") {
-    sendJSON(res, 200, users);
+  // Route: GET /users
+  if (method === "GET" && pathname === "/users") {
+    const users = (await pm.state.get("users-mock:users")) || [];
+    sendJSON(res, 200, users.map(sanitizeUser));
     return;
   }
 
   // @endpoint POST /users
-  if (method === "POST" && url === "/users") {
+  // Route: POST /users
+  if (method === "POST" && pathname === "/users") {
+    let body;
     try {
-      const input = await parseBody(req);
-      const newUser = {
-        id: String(nextId++),
-        name: input.name,
-        email: input.email,
-        role: input.role,
-        status: input.status || "active",
-        createdAt: new Date().toISOString()
-      };
-      users.push(newUser);
-      sendJSON(res, 201, newUser);
+      body = await readBody(req);
     } catch (e) {
-      sendJSON(res, 400, { error: "Invalid request body" });
+      sendJSON(res, 400, { error: "Invalid JSON body" });
+      return;
     }
+
+    if (!body.name || !body.email) {
+      sendJSON(res, 400, { error: "name and email are required" });
+      return;
+    }
+
+    const users = (await pm.state.get("users-mock:users")) || [];
+    const now = new Date().toISOString();
+    const newUser = {
+      id: generateId(),
+      name: body.name,
+      email: body.email,
+      status: body.status || "active",
+      createdAt: now,
+      updatedAt: now,
+    };
+    users.push(newUser);
+    await pm.state.set("users-mock:users", users);
+    sendJSON(res, 201, sanitizeUser(newUser));
     return;
   }
 
   // @endpoint GET /users/:id
-  if (method === "GET" && url.match(/^\/users\/[^/?]+$/)) {
-    const id = extractUserId(url);
-    const user = users.find(u => u.id === id);
-    if (user) {
-      sendJSON(res, 200, user);
-    } else {
+  // Route: GET /users/:id
+  const idMatchGet = pathname.match(/^\/users\/([^/]+)$/);
+  if (method === "GET" && idMatchGet) {
+    const id = idMatchGet[1];
+    const users = (await pm.state.get("users-mock:users")) || [];
+    const user = users.find((u) => u.id === id);
+    if (!user) {
       sendJSON(res, 404, { error: "User not found" });
+      return;
     }
+    sendJSON(res, 200, sanitizeUser(user));
     return;
   }
 
   // @endpoint PUT /users/:id
-  if (method === "PUT" && url.match(/^\/users\/[^/?]+$/)) {
-    const id = extractUserId(url);
-    const index = users.findIndex(u => u.id === id);
-    if (index === -1) {
+  // Route: PUT /users/:id
+  const idMatchPut = pathname.match(/^\/users\/([^/]+)$/);
+  if (method === "PUT" && idMatchPut) {
+    const id = idMatchPut[1];
+    let body;
+    try {
+      body = await readBody(req);
+    } catch (e) {
+      sendJSON(res, 400, { error: "Invalid JSON body" });
+      return;
+    }
+
+    const users = (await pm.state.get("users-mock:users")) || [];
+    const idx = users.findIndex((u) => u.id === id);
+    if (idx === -1) {
       sendJSON(res, 404, { error: "User not found" });
       return;
     }
-    try {
-      const input = await parseBody(req);
-      users[index] = {
-        ...users[index],
-        name: input.name !== undefined ? input.name : users[index].name,
-        email: input.email !== undefined ? input.email : users[index].email,
-        role: input.role !== undefined ? input.role : users[index].role,
-        status: input.status !== undefined ? input.status : users[index].status
-      };
-      sendJSON(res, 200, users[index]);
-    } catch (e) {
-      sendJSON(res, 400, { error: "Invalid request body" });
-    }
+
+    const now = new Date().toISOString();
+    // Only allow updating mutable fields; id and createdAt are immutable
+    const updatable = ["name", "email", "status"];
+    updatable.forEach((field) => {
+      if (body[field] !== undefined) {
+        users[idx][field] = body[field];
+      }
+    });
+    users[idx].updatedAt = now;
+    await pm.state.set("users-mock:users", users);
+    sendJSON(res, 200, sanitizeUser(users[idx]));
     return;
   }
 
   // @endpoint DELETE /users/:id
-  if (method === "DELETE" && url.match(/^\/users\/[^/?]+$/)) {
-    const id = extractUserId(url);
-    const index = users.findIndex(u => u.id === id);
-    if (index === -1) {
+  // Route: DELETE /users/:id
+  const idMatchDelete = pathname.match(/^\/users\/([^/]+)$/);
+  if (method === "DELETE" && idMatchDelete) {
+    const id = idMatchDelete[1];
+    const users = (await pm.state.get("users-mock:users")) || [];
+    const idx = users.findIndex((u) => u.id === id);
+    if (idx === -1) {
       sendJSON(res, 404, { error: "User not found" });
       return;
     }
-    users.splice(index, 1);
-    res.writeHead(204);
-    res.end();
+    users.splice(idx, 1);
+    await pm.state.set("users-mock:users", users);
+    sendEmpty(res, 204);
     return;
   }
 
-  // Fallback for unmocked routes
-  sendJSON(res, 404, { error: "Mock route not defined", method, url });
+  // NOTE: POST /users/:id is intentionally excluded — it is a placeholder
+  // artifact in the generated collection and has no grounded behavior.
+
+  // 404 fallback
+  sendJSON(res, 404, { error: "Not found" });
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT);
+server.listen(process.env.PORT || 3000, () => {
+  console.log(`users-mock listening on port ${process.env.PORT || 3000}`);
+});

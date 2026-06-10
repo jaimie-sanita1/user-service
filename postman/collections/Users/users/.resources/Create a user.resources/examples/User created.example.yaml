@@ -20,14 +20,58 @@ response:
   headers:
     Content-Type: application/json
   body:
-    type: text
+    type: json
     content: |-
       {
-        "id": "string",
-        "name": "string",
-        "email": "jURUlYkO2U@DVgHcqXiggqeDjDblvi.qtvu",
+        "id": "user-123",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
         "role": "member",
-        "status": "suspended",
-        "createdAt": "2010-03-11T06:12:56.098Z"
+        "status": "active",
+        "createdAt": "2024-01-15T10:30:00Z"
+      }
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the user"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "member"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "inactive",
+              "suspended"
+            ]
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "email",
+          "role",
+          "status",
+          "createdAt"
+        ]
       }
 order: 1000

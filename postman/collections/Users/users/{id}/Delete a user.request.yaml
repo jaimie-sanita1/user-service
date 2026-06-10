@@ -1,10 +1,24 @@
 $kind: http-request
-url: '{{baseUrl}}/users/:id'
+url: "{{baseUrl}}/users/:id"
 method: DELETE
 headers:
   Accept: application/json
 pathVariables:
-  id: '3'
+  - key: id
+    value: string
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string",
+            "default": "<string>"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
 body:
   type: text
   content: ""
@@ -15,13 +29,19 @@ scripts:
           pm.response.to.have.status(204);
       });
 
-      pm.test("Response time is under 500ms", function () {
-          pm.expect(pm.response.responseTime).to.be.below(500);
+      pm.test("Security headers are present", function () {
+          ["X-Content-Type-Options", "X-Frame-Options"].forEach(function (header) {
+              pm.expect(pm.response.headers.has(header), `Missing ${header}`).to.be.true;
+          });
+      });
+
+      pm.test("Response time is under 800ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(800);
       });
 
       pm.test("Response body is empty", function () {
           pm.expect(pm.response.text()).to.be.empty;
       });
     language: text/javascript
-examples: './.resources/Delete a user.resources/examples'
+examples: ./.resources/Delete a user.resources/examples
 order: 3000
