@@ -5,12 +5,21 @@ workspace:
 localResources:
   specs:
     - ../users.yaml
+  collections:
+    - ../postman/collections/Users
+  environments:
+    - ../postman/environments/Production.environment.yaml
+    - ../postman/environments/QA.environment.yaml
+    - ../postman/environments/Staging.environment.yaml
 
 # Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
 
 cloudResources:
   specs:
-    ../postman/specs/users.yaml: 581ce453-ea86-4665-afab-5993afe0ee56
     ../users.yaml: 01c6325b-4314-4aa9-8a31-5ee4980f9647
   collections:
     ../postman/collections/Users: 52538155-eb02ab1d-19d9-405d-9225-9fc210033e44
+  environments:
+    ../postman/environments/Production.environment.yaml: 0f251cf5-cb99-5f83-bd34-0c119bfab0fa
+    ../postman/environments/QA.environment.yaml: e0b2b0e4-7e90-5637-a3b2-ecd63b1e169c
+    ../postman/environments/Staging.environment.yaml: 887b30a6-68ee-5937-aae0-4572c03df522
