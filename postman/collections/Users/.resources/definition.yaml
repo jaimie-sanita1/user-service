@@ -2,8 +2,8 @@ $kind: collection
 variables:
   baseUrl: /
 auth:
-  - id: 87fafbf2-ab33-4db8-8637-227742974f53
+  - id: 53860c96-ca09-4a92-8c4c-83cc38b2b94e
     type: apikey
     name: apikey auth
     credentials:
-      value: PMAK-69b1a8e5fa3a9f0001478998-7f5d47c6f51badb12fce91cacb9e2714c0
+      value: ${{ secrets.POSTMAN_API_KEY }}

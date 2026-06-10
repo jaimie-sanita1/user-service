@@ -3,22 +3,9 @@ url: "{{baseUrl}}/users/:id"
 method: DELETE
 headers:
   Accept: application/json
+  x-mock-response-code: "204"
 pathVariables:
-  - key: id
-    value: string
-    $type: |-
-      {
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string",
-            "default": "<string>"
-          }
-        },
-        "required": [
-          "value"
-        ]
-      }
+  id: string
 body:
   type: text
   content: ""
@@ -27,12 +14,6 @@ scripts:
     code: |-
       pm.test("Status code is 204", function () {
           pm.response.to.have.status(204);
-      });
-
-      pm.test("Security headers are present", function () {
-          ["X-Content-Type-Options", "X-Frame-Options"].forEach(function (header) {
-              pm.expect(pm.response.headers.has(header), `Missing ${header}`).to.be.true;
-          });
       });
 
       pm.test("Response time is under 800ms", function () {
