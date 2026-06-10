@@ -1,11 +1,9 @@
 name: Postman Governance
 
 on:
-  pull_request:
+  push:
     branches:
       - main
-    paths:
-      - 'users.yaml'
   workflow_dispatch:
 
 jobs:
