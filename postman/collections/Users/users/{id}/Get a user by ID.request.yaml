@@ -4,7 +4,20 @@ method: GET
 headers:
   Accept: application/json
 pathVariables:
-  id: string
+  - key: id
+    value: string
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
 body:
   type: text
   content: ""

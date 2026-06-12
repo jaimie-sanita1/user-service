@@ -5,7 +5,20 @@ headers:
   Accept: application/json
   x-mock-response-code: "204"
 pathVariables:
-  id: string
+  - key: id
+    value: string
+    $type: |-
+      {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value"
+        ]
+      }
 body:
   type: text
   content: ""
@@ -25,4 +38,4 @@ scripts:
       });
     language: text/javascript
 examples: ./.resources/Delete a user.resources/examples
-order: 3000
+order: 2000

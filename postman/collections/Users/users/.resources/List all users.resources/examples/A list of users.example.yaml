@@ -17,20 +17,67 @@ response:
     content: |-
       [
         {
-          "id": "<string>",
-          "name": "<string>",
-          "email": "<email>",
+          "id": "string",
+          "name": "string",
+          "email": "gIz0I1yBc@zngjLLrEVgADDRRVloUIfvPNsxWn.yzu",
           "role": "admin",
-          "status": "inactive",
-          "createdAt": "<dateTime>"
+          "status": "active",
+          "createdAt": "1982-04-30T21:12:02.133Z"
         },
         {
-          "id": "<string>",
-          "name": "<string>",
-          "email": "<email>",
+          "id": "string",
+          "name": "string",
+          "email": "R2nsHc@YHcaEYOVlVxfGxTSPVjCjduyj.qw",
           "role": "admin",
           "status": "suspended",
-          "createdAt": "<dateTime>"
+          "createdAt": "1966-09-26T13:51:16.361Z"
         }
       ]
+    $type: |-
+      {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "Unique identifier for the user"
+            },
+            "name": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string",
+              "format": "email"
+            },
+            "role": {
+              "type": "string",
+              "enum": [
+                "admin",
+                "member"
+              ]
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "active",
+                "inactive",
+                "suspended"
+              ]
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "email",
+            "role",
+            "status",
+            "createdAt"
+          ]
+        }
+      }
 order: 1000
