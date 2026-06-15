@@ -1,6 +1,9 @@
 name: Postman Governance
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -16,4 +19,4 @@ jobs:
       - name: Login to Postman
         run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
       - name: Lint spec
-        run: postman spec lint users.yaml --workspace-id 83761f22-e042-47eb-9fa9-51f53acf2d6c --report-events
+        run: postman spec lint users.yaml --workspace-id 83761f22-e042-47eb-9fa9-51f53acf2d6c --report-events --fail-on-error
