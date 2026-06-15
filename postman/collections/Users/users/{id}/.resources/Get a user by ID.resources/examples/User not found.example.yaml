@@ -2,8 +2,12 @@ $kind: http-example
 request:
   url: "{{baseUrl}}/users/:id"
   method: GET
+  headers:
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
   pathVariables:
-    id: string
+    id: <string>
   body:
     type: text
     content: ""

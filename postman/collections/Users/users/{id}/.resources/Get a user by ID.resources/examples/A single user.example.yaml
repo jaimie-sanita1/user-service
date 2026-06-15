@@ -3,9 +3,13 @@ request:
   url: "{{baseUrl}}/users/:id"
   method: GET
   headers:
-    Accept: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
   pathVariables:
-    id: string
+    id: <string>
   body:
     type: text
     content: ""
@@ -18,12 +22,12 @@ response:
     type: json
     content: |-
       {
-        "id": "string",
-        "name": "string",
-        "email": "jURUlYkO2U@DVgHcqXiggqeDjDblvi.qtvu",
+        "id": "<string>",
+        "name": "<string>",
+        "email": "<email>",
         "role": "member",
-        "status": "suspended",
-        "createdAt": "2010-03-11T06:12:56.098Z"
+        "status": "active",
+        "createdAt": "<dateTime>"
       }
     $type: |-
       {

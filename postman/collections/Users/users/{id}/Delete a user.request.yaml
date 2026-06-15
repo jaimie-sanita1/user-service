@@ -3,16 +3,16 @@ url: "{{baseUrl}}/users/:id"
 method: DELETE
 headers:
   Accept: application/json
-  x-mock-response-code: "204"
 pathVariables:
   - key: id
-    value: string
+    value: <string>
     $type: |-
       {
         "type": "object",
         "properties": {
           "value": {
-            "type": "string"
+            "type": "string",
+            "default": "<string>"
           }
         },
         "required": [

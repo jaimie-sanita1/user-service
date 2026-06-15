@@ -3,8 +3,6 @@ description: API for application users
 variables:
   baseUrl: /
 auth:
-  - id: f00c6443-0810-4f10-9a9e-bbcac18148b0
-    type: apikey
-    name: apikey auth
-    credentials:
-      value: ${{ secrets.POSTMAN_API_KEY }}
+  - id: 64200ba4-b390-4deb-9510-21c22d086fb9
+    type: bearer
+    name: bearer auth

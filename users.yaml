@@ -3,6 +3,8 @@ info:
   description: 'API for application users'
   title: Users API
   version: 1.0.0
+# security:
+#   - bearerAuth: []
 paths:
   /users:
     get:
@@ -64,6 +66,11 @@ paths:
         '404':
           description: User not found
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     User:
       type: object
