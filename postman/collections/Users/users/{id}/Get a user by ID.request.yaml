@@ -5,13 +5,14 @@ headers:
   Accept: application/json
 pathVariables:
   - key: id
-    value: string
+    value: <string>
     $type: |-
       {
         "type": "object",
         "properties": {
           "value": {
-            "type": "string"
+            "type": "string",
+            "default": "<string>"
           }
         },
         "required": [

@@ -3,16 +3,21 @@ request:
   url: "{{baseUrl}}/users"
   method: POST
   headers:
-    Content-Type: application/json
-    Accept: application/json
+    - key: Content-Type
+      value: application/json
+    - key: Accept
+      value: application/json
+    - key: Authorization
+      value: Bearer <token>
+      description: "Added as a part of security scheme: bearer"
   body:
     type: json
     content: |-
       {
-        "name": "string",
-        "email": "CTL87mOiFlAl@NNTPRPUxpwf.pd",
+        "name": "<string>",
+        "email": "<email>",
         "role": "member",
-        "status": "active"
+        "status": "inactive"
       }
 response:
   statusCode: 201
@@ -23,12 +28,12 @@ response:
     type: json
     content: |-
       {
-        "id": "user-123",
-        "name": "John Doe",
-        "email": "john.doe@example.com",
+        "id": "<string>",
+        "name": "<string>",
+        "email": "<email>",
         "role": "member",
         "status": "active",
-        "createdAt": "2024-01-15T10:30:00Z"
+        "createdAt": "<dateTime>"
       }
     $type: |-
       {

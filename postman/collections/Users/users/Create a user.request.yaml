@@ -8,10 +8,10 @@ body:
   type: json
   content: |-
     {
-      "name": "John Doe",
-      "email": "john.doe@example.com",
+      "name": "<string>",
+      "email": "<email>",
       "role": "member",
-      "status": "active"
+      "status": "inactive"
     }
   $type: |-
     {
