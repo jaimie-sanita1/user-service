@@ -1,5 +1,6 @@
 openapi: 3.0.0
 info:
+  description: 'API for application users'
   title: Users API
   version: 1.0.0
 paths:
@@ -43,29 +44,6 @@ paths:
       responses:
         '200':
           description: A single user
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
-    put:
-      summary: Update a user
-      parameters:
-        - name: id
-          in: path
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/UserInput'
-      responses:
-        '200':
-          description: User updated
           content:
             application/json:
               schema:

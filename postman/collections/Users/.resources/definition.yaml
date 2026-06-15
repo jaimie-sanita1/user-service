@@ -1,8 +1,9 @@
 $kind: collection
+description: API for application users
 variables:
   baseUrl: /
 auth:
-  - id: 53860c96-ca09-4a92-8c4c-83cc38b2b94e
+  - id: f00c6443-0810-4f10-9a9e-bbcac18148b0
     type: apikey
     name: apikey auth
     credentials:
