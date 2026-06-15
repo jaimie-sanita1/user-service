@@ -1,14 +1,47 @@
 name: Publish changes to Postman
 on:
-  push:
+  workflow_run:
+    workflows: ["Postman Tests", "Postman Governance"]
+    types:
+      - completed
     branches:
       - main
 
 jobs:
+  check-other-workflow:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    outputs:
+      other_conclusion: ${{ steps.check.outputs.other_conclusion }}
+    steps:
+      - name: Check the other workflow's latest run on this commit
+        id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          TRIGGERING_WORKFLOW: ${{ github.event.workflow_run.name }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ "$TRIGGERING_WORKFLOW" = "Postman Tests" ]; then
+            OTHER="postman-governance.yml"
+          else
+            OTHER="postman-tests.yml"
+          fi
+          echo "Checking $OTHER for commit $HEAD_SHA"
+          CONCLUSION=$(gh api \
+            "repos/$REPO/actions/workflows/$OTHER/runs?head_sha=$HEAD_SHA&branch=main" \
+            --jq '.workflow_runs | map(select(.status == "completed")) | .[0].conclusion // "pending"')
+          echo "Other workflow conclusion: $CONCLUSION"
+          echo "other_conclusion=$CONCLUSION" >> "$GITHUB_OUTPUT"
+
   publish-changes:
+    needs: check-other-workflow
+    if: ${{ needs.check-other-workflow.outputs.other_conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - name: Install Postman CLI
         run: curl -o- "https://dl-cli.pstmn.io/install/unix.sh" | sh
       - name: Login to Postman
