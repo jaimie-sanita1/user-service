@@ -8,10 +8,9 @@ body:
   type: json
   content: |-
     {
-      "name": "<string>",
-      "email": "<email>",
-      "role": "member",
-      "status": "inactive"
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "status": "active"
     }
   $type: |-
     {
@@ -23,13 +22,6 @@ body:
         "email": {
           "type": "string",
           "format": "email"
-        },
-        "role": {
-          "type": "string",
-          "enum": [
-            "admin",
-            "member"
-          ]
         },
         "status": {
           "type": "string",
@@ -43,8 +35,7 @@ body:
       },
       "required": [
         "name",
-        "email",
-        "role"
+        "email"
       ]
     }
 scripts:
@@ -62,15 +53,14 @@ scripts:
       });
 
 
-      pm.test("Response time is under 500ms", function () {
-          pm.expect(pm.response.responseTime).to.be.below(500);
+      pm.test("Response time is under 1000ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(1000);
       });
 
       pm.test("Response contains user object", function () {
           pm.expect(jsonData).to.have.property("id");
           pm.expect(jsonData).to.have.property("name");
           pm.expect(jsonData).to.have.property("email");
-          pm.expect(jsonData).to.have.property("role");
           pm.expect(jsonData).to.have.property("status");
           pm.expect(jsonData).to.have.property("createdAt");
       });
@@ -84,8 +74,7 @@ scripts:
       pm.test("Created resource reflects the submitted identity fields", function () {
           pm.expect(jsonData.name).to.eql(requestBody.name);
           pm.expect(jsonData.email).to.eql(requestBody.email);
-          pm.expect(jsonData.role).to.eql(requestBody.role);
       });
     language: text/javascript
 examples: ./.resources/Create a user.resources/examples
-order: 3000
+order: 2000

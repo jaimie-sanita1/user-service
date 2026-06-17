@@ -1,13 +1,11 @@
 $kind: http-request
-name: Delete a user
 url: "{{baseUrl}}/users/:id"
 method: DELETE
 headers:
   Accept: application/json
-  x-mock-response-code: ""
 pathVariables:
   - key: id
-    value: <string>
+    value: "{{userId}}"
     $type: |-
       {
         "type": "object",

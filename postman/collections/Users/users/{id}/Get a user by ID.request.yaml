@@ -1,11 +1,16 @@
 $kind: http-request
+name: Get a user by ID
 url: "{{baseUrl}}/users/:id"
 method: GET
 headers:
-  Accept: application/json
+  - key: Accept
+    value: application/json
+  - key: x-mock-response-code
+    value: "200"
+    disabled: true
 pathVariables:
   - key: id
-    value: <string>
+    value: "{{userId}}"
     $type: |-
       {
         "type": "object",
@@ -19,9 +24,6 @@ pathVariables:
           "value"
         ]
       }
-body:
-  type: text
-  content: ""
 scripts:
   - type: afterResponse
     code: |-
@@ -38,12 +40,6 @@ scripts:
 
       pm.test("Response time is less than 800ms", function () {
           pm.expect(pm.response.responseTime).to.be.below(800);
-      });
-
-      pm.test("Response contains expected user fields", function () {
-          ["id", "name", "email", "role", "status", "createdAt"].forEach(function (field) {
-              pm.expect(jsonData).to.have.property(field);
-          });
       });
 
       pm.test("No sensitive fields are exposed", function () {

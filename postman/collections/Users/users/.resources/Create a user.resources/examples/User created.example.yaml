@@ -16,7 +16,6 @@ request:
       {
         "name": "<string>",
         "email": "<email>",
-        "role": "member",
         "status": "inactive"
       }
 response:
@@ -28,12 +27,11 @@ response:
     type: json
     content: |-
       {
-        "id": "<string>",
-        "name": "<string>",
-        "email": "<email>",
-        "role": "member",
+        "id": "123456",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
         "status": "active",
-        "createdAt": "<dateTime>"
+        "createdAt": "{$isoTimestamp}"
       }
     $type: |-
       {
@@ -49,13 +47,6 @@ response:
           "email": {
             "type": "string",
             "format": "email"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "member"
-            ]
           },
           "status": {
             "type": "string",
@@ -74,7 +65,6 @@ response:
           "id",
           "name",
           "email",
-          "role",
           "status",
           "createdAt"
         ]
