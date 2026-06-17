@@ -42,7 +42,6 @@ scripts:
               pm.expect(user).to.have.property("id");
               pm.expect(user).to.have.property("name");
               pm.expect(user).to.have.property("email");
-              pm.expect(user).to.have.property("role");
               pm.expect(user).to.have.property("status");
               pm.expect(user).to.have.property("createdAt");
           });
@@ -53,7 +52,6 @@ scripts:
               pm.expect(user.id).to.be.a("string");
               pm.expect(user.name).to.be.a("string");
               pm.expect(user.email).to.be.a("string");
-              pm.expect(user.role).to.be.a("string");
               pm.expect(user.status).to.be.a("string");
               pm.expect(user.createdAt).to.be.a("string");
           });
@@ -63,12 +61,6 @@ scripts:
           const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$|^<email>$/;
           jsonData.forEach(function (user) {
               pm.expect(user.email).to.match(emailRegex);
-          });
-      });
-
-      pm.test("Each user has valid role value", function () {
-          jsonData.forEach(function (user) {
-              pm.expect(user.role).to.be.oneOf(["admin", "member"]);
           });
       });
 

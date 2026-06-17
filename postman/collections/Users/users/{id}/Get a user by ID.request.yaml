@@ -1,11 +1,18 @@
 $kind: http-request
+name: Get a user by ID
 url: "{{baseUrl}}/users/:id"
 method: GET
 headers:
-  Accept: application/json
+  - key: Accept
+    value: application/json
+    disabled: false
+  - key: x-mock-response-code
+    value: "200"
+    disabled: true
 pathVariables:
   - key: id
-    value: <string>
+    value: "{{userId}}"
+    description: ""
     $type: |-
       {
         "type": "object",
@@ -19,9 +26,6 @@ pathVariables:
           "value"
         ]
       }
-body:
-  type: text
-  content: ""
 scripts:
   - type: afterResponse
     code: |-
@@ -41,7 +45,7 @@ scripts:
       });
 
       pm.test("Response contains expected user fields", function () {
-          ["id", "name", "email", "role", "status", "createdAt"].forEach(function (field) {
+          ["id", "name", "email", "status", "createdAt"].forEach(function (field) {
               pm.expect(jsonData).to.have.property(field);
           });
       });

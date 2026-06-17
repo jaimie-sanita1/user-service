@@ -10,7 +10,6 @@ body:
     {
       "name": "<string>",
       "email": "<email>",
-      "role": "member",
       "status": "inactive"
     }
   $type: |-
@@ -24,13 +23,6 @@ body:
           "type": "string",
           "format": "email"
         },
-        "role": {
-          "type": "string",
-          "enum": [
-            "admin",
-            "member"
-          ]
-        },
         "status": {
           "type": "string",
           "enum": [
@@ -43,8 +35,7 @@ body:
       },
       "required": [
         "name",
-        "email",
-        "role"
+        "email"
       ]
     }
 scripts:
@@ -70,7 +61,6 @@ scripts:
           pm.expect(jsonData).to.have.property("id");
           pm.expect(jsonData).to.have.property("name");
           pm.expect(jsonData).to.have.property("email");
-          pm.expect(jsonData).to.have.property("role");
           pm.expect(jsonData).to.have.property("status");
           pm.expect(jsonData).to.have.property("createdAt");
       });
@@ -84,8 +74,7 @@ scripts:
       pm.test("Created resource reflects the submitted identity fields", function () {
           pm.expect(jsonData.name).to.eql(requestBody.name);
           pm.expect(jsonData.email).to.eql(requestBody.email);
-          pm.expect(jsonData.role).to.eql(requestBody.role);
       });
     language: text/javascript
-examples: ./.resources/Create a user.resources/examples
-order: 3000
+examples: .resources/Create a user.resources/examples
+order: 1535

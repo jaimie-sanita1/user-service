@@ -16,7 +16,6 @@ request:
       {
         "name": "<string>",
         "email": "<email>",
-        "role": "member",
         "status": "inactive"
       }
 response:
@@ -31,8 +30,7 @@ response:
         "id": "<string>",
         "name": "<string>",
         "email": "<email>",
-        "role": "member",
-        "status": "active",
+        "status": "suspended",
         "createdAt": "<dateTime>"
       }
     $type: |-
@@ -49,13 +47,6 @@ response:
           "email": {
             "type": "string",
             "format": "email"
-          },
-          "role": {
-            "type": "string",
-            "enum": [
-              "admin",
-              "member"
-            ]
           },
           "status": {
             "type": "string",
@@ -74,7 +65,6 @@ response:
           "id",
           "name",
           "email",
-          "role",
           "status",
           "createdAt"
         ]

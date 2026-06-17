@@ -1,5 +1,6 @@
 workspace:
-  id: 83761f22-e042-47eb-9fa9-51f53acf2d6c
+  id: a0c3f43a-5a7f-40fb-b343-2e69b0f23230
+
 localResources:
   specs:
     - ../users.yaml
@@ -9,11 +10,14 @@ localResources:
     - ../postman/environments/Production.environment.yaml
     - ../postman/environments/QA.environment.yaml
     - ../postman/environments/Staging.environment.yaml
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
 cloudResources:
   specs:
-    ../users.yaml: 01c6325b-4314-4aa9-8a31-5ee4980f9647
+    ../users.yaml: 1cc6b115-aa2d-4a93-ba30-49fda20c1427
   collections:
-    ../postman/collections/Users: 52538155-eb02ab1d-19d9-405d-9225-9fc210033e44
+    ../postman/collections/Users: 52538155-1f23b467-b2c4-4274-a259-02c56a32ba00
   environments:
     ../postman/environments/Production.environment.yaml: 0f251cf5-cb99-5f83-bd34-0c119bfab0fa
     ../postman/environments/QA.environment.yaml: e0b2b0e4-7e90-5637-a3b2-ecd63b1e169c
