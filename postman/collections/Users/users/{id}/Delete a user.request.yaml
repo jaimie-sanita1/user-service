@@ -5,7 +5,7 @@ headers:
   Accept: application/json
 pathVariables:
   - key: id
-    value: <string>
+    value: "{{userId}}"
     $type: |-
       {
         "type": "object",

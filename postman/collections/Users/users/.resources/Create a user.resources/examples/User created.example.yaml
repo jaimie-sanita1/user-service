@@ -27,11 +27,11 @@ response:
     type: json
     content: |-
       {
-        "id": "<string>",
-        "name": "<string>",
-        "email": "<email>",
-        "status": "suspended",
-        "createdAt": "<dateTime>"
+        "id": "123456",
+        "name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "status": "active",
+        "createdAt": "{$isoTimestamp}"
       }
     $type: |-
       {

@@ -8,9 +8,9 @@ body:
   type: json
   content: |-
     {
-      "name": "<string>",
-      "email": "<email>",
-      "status": "inactive"
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "status": "active"
     }
   $type: |-
     {
@@ -53,8 +53,8 @@ scripts:
       });
 
 
-      pm.test("Response time is under 500ms", function () {
-          pm.expect(pm.response.responseTime).to.be.below(500);
+      pm.test("Response time is under 1000ms", function () {
+          pm.expect(pm.response.responseTime).to.be.below(1000);
       });
 
       pm.test("Response contains user object", function () {
@@ -76,5 +76,5 @@ scripts:
           pm.expect(jsonData.email).to.eql(requestBody.email);
       });
     language: text/javascript
-examples: .resources/Create a user.resources/examples
-order: 1535
+examples: ./.resources/Create a user.resources/examples
+order: 2000

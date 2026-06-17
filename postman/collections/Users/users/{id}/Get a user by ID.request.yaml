@@ -1,18 +1,15 @@
 $kind: http-request
-name: Get a user by ID
 url: "{{baseUrl}}/users/:id"
 method: GET
 headers:
   - key: Accept
     value: application/json
-    disabled: false
   - key: x-mock-response-code
     value: "200"
     disabled: true
 pathVariables:
   - key: id
     value: "{{userId}}"
-    description: ""
     $type: |-
       {
         "type": "object",

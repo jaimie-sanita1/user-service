@@ -3,6 +3,6 @@ description: API for application users
 variables:
   baseUrl: /
 auth:
-  - id: 587d0677-35e3-4e7a-a664-37c07b82b606
+  - id: e78d1c9a-4aaa-4e45-a8ce-696356edec22
     type: bearer
     name: bearer auth
